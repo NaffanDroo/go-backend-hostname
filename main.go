@@ -22,10 +22,11 @@ func main() {
 	r.Use(middleware.Timeout(60 * time.Second))
 
 	// Routes
+	fmt.Println("🚏 Adding Routes...")
 	r.Route("/v1", func(r chi.Router) {
 		r.Get("/hostname", hostname.GetHostName)
 	})
 
-	fmt.Println("Starting up...")
+	fmt.Println("✅ Starting up...")
 	http.ListenAndServe(":3000", r)
 }
